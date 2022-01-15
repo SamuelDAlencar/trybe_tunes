@@ -39,7 +39,9 @@ export default class Header extends Component {
           : (
             <>
               <span data-testid="header-user-name">{user}</span>
-              <Link to="/Profile">Profile</Link>
+              <Link data-testid="link-to-search" to="/search">Search</Link>
+              <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+              <Link data-testid="link-to-profile" to="/profile">Profile</Link>
             </>)}
       </header>
     );
