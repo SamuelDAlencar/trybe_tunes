@@ -18,11 +18,17 @@ class App extends Component {
       input: '',
       isDisabled: true,
       isLoading: false,
-      isLoggedin: false,
+      isLogged: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.getUser = this.getUser.bind(this);
+  }
+
+  componentWillUnmount() {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {};
   }
 
   handleChange({ target: { value } }) {
@@ -42,11 +48,16 @@ class App extends Component {
 
     this.setState({ isLoading: true });
     await userAPI.createUser({ name: input });
-    this.setState({ isLoading: false, isLoggedin: true });
+    this.setState({ isLoading: false, isLogged: true });
+  }
+
+  async getUser() {
+    const { input } = this.state;
+    await userAPI.getUser(input);
   }
 
   render() {
-    const { input, isDisabled, isLoading, isLoggedin } = this.state;
+    const { input, isDisabled, isLoading, isLogged } = this.state;
     return (
       <Router>
         <Switch>
@@ -62,16 +73,16 @@ class App extends Component {
                   createUser={ this.handleClick }
                 />
                 {isLoading && <Loading /> }
-                {isLoggedin && <Redirect to="/search" /> }
+                {isLogged && <Redirect to="/search" /> }
               </>
             ) }
           />
           <Route exact path="/search" component={ Search } />
-          <Route exact path="/album/:id" component={ Album } />
-          <Route exact path="/favorites" component={ Favorites } />
-          <Route exact path="/profile" component={ Profile } />
-          <Route exact path="/profile/edit" component={ ProfileEdit } />
-          <Route exact path="*" component={ NotFound } />
+          <Route exact path="/album/:id" render={ Album } />
+          <Route exact path="/favorites" render={ Favorites } />
+          <Route exact path="/profile" render={ Profile } />
+          <Route exact path="/profile/edit" render={ ProfileEdit } />
+          <Route exact path="*" render={ NotFound } />
         </Switch>
       </Router>
     );
