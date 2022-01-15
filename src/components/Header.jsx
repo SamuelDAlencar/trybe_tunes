@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 // import propTypes from 'prop-types';
 import Loading from '../pages/Loading';
 import * as userAPI from '../services/userAPI';
@@ -35,7 +36,11 @@ export default class Header extends Component {
     return (
       <header data-testid="header-component">
         {isLoading ? <Loading />
-          : <span data-testid="header-user-name">{ user }</span>}
+          : (
+            <>
+              <span data-testid="header-user-name">{user}</span>
+              <Link to="/Profile">Profile</Link>
+            </>)}
       </header>
     );
   }

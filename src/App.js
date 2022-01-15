@@ -78,11 +78,11 @@ class App extends Component {
             ) }
           />
           <Route exact path="/search" component={ Search } />
-          <Route exact path="/album/:id" render={ Album } />
-          <Route exact path="/favorites" render={ Favorites } />
-          <Route exact path="/profile" render={ Profile } />
-          <Route exact path="/profile/edit" render={ ProfileEdit } />
-          <Route exact path="*" render={ NotFound } />
+          <Route exact path="/album/:id" component={ Album } />
+          <Route exact path="/favorites" component={ Favorites } />
+          <Route exact path="/profile" component={ Profile } />
+          <Route exact path="/profile/edit" component={ ProfileEdit } />
+          <Route exact path="*" component={ NotFound } />
         </Switch>
       </Router>
     );
