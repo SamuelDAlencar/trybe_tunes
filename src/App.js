@@ -32,14 +32,10 @@ class App extends Component {
   }
 
   handleChange({ target: { value } }) {
-    const MAX_VALUE = 3;
+    const MAX_LENGTH = 3;
 
     this.setState(({ input: value }), () => {
-      if (value.length >= MAX_VALUE) {
-        this.setState({ isDisabled: false });
-      } else {
-        this.setState({ isDisabled: true });
-      }
+      this.setState({ isDisabled: value.length < MAX_LENGTH });
     });
   }
 

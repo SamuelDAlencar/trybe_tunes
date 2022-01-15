@@ -21,7 +21,6 @@ export default class Header extends Component {
   }
 
   async fetchUser() {
-    console.log('entrou');
     this.setState({ isLoading: true });
 
     const userName = await userAPI.getUser();
@@ -31,7 +30,6 @@ export default class Header extends Component {
 
   render() {
     const { user, isLoading } = this.state;
-    console.log(user);
 
     return (
       <header data-testid="header-component">
