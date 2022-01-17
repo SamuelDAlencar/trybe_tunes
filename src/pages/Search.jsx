@@ -100,7 +100,10 @@ export default class Search extends Component {
                     key={ result.collectionId }
                     to={ `/album/${result.collectionId}` }
                   >
-                    {result.collectionName}
+                    <h2>{result.collectionName}</h2>
+                    <h4>{result.artistName}</h4>
+                    <p>{result.releaseDate}</p>
+                    <h3>{result.collectionPrice}</h3>
                   </Link>
                 ))}
               </>)}
