@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from './Loading';
 
 export default class Album extends Component {
   constructor() {
@@ -12,13 +14,23 @@ export default class Album extends Component {
       albumSongs: [],
       artistName: '',
       collectionName: '',
+      isLoading: false,
     };
 
     this.fetchData = this.fetchData.bind(this);
+    this.getSongs = this.getSongs.bind(this);
   }
 
   async componentDidMount() {
     this.fetchData();
+    this.getSongs();
+  }
+
+  async getSongs() {
+    this.setState({ isLoading: true });
+    await getFavoriteSongs();
+    console.log(await getFavoriteSongs());
+    this.setState({ isLoading: false });
   }
 
   async fetchData() {
@@ -33,22 +45,25 @@ export default class Album extends Component {
   }
 
   render() {
-    const { albumSongs, artistName, collectionName } = this.state;
+    const { albumSongs, artistName, collectionName, isLoading } = this.state;
     return (
       <>
         <Header />
-        <div data-testid="page-album">
-          <h3 data-testid="artist-name">{artistName}</h3>
-          <h4 data-testid="album-name">{collectionName}</h4>
-        </div>
-        {albumSongs.map((song) => (
-          song.trackName !== undefined && <MusicCard
-            key={ song.previewUrl }
-            trackId={ song.trackId }
-            trackName={ song.trackName }
-            previewUrl={ song.previewUrl }
-            song={ song }
-          />))}
+        {isLoading ? <Loading /> : (
+          <>
+            <div data-testid="page-album">
+              <h3 data-testid="artist-name">{artistName}</h3>
+              <h4 data-testid="album-name">{collectionName}</h4>
+            </div>
+            {albumSongs.map((song) => (
+              song.trackName !== undefined && <MusicCard
+                key={ song.previewUrl }
+                trackId={ song.trackId }
+                trackName={ song.trackName }
+                previewUrl={ song.previewUrl }
+                song={ song }
+              />))}
+          </>)}
       </>
     );
   }
