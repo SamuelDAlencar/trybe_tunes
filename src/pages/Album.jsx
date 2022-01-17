@@ -46,6 +46,7 @@ export default class Album extends Component {
 
   render() {
     const { albumSongs, artistName, collectionName, isLoading } = this.state;
+
     return (
       <>
         <Header />
