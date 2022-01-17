@@ -33,8 +33,8 @@ export default class Search extends Component {
 
   async searchArtist() {
     this.setState({ isLoading: true });
-    const input = document.getElementById('search-artist');
-    const results = await searchAlbumsAPIs(input.value);
+    const { input } = this.state;
+    const results = await searchAlbumsAPIs(input);
     console.log(results);
 
     if (results.length === 0) {
@@ -51,8 +51,6 @@ export default class Search extends Component {
       searchResults: [...results],
       input: '',
     });
-
-    input.value = '';
   }
 
   render() {
