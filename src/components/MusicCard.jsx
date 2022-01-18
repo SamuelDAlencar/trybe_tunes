@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs, addSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 export default class MusicCard extends Component {
   constructor() {
     super();
 
-    this.addFavorite = this.addFavorite.bind(this);
     this.state = {
       isLoading: false,
       checked: false,
+      favoriteSongs: [],
     };
+
+    this.addFavorite = this.addFavorite.bind(this);
+    this.getSongs = this.getSongs.bind(this);
+  }
+
+  async componentDidMount() {
+    this.getSongs();
+  }
+
+  async getSongs() {
+    this.setState({ isLoading: true });
+    this.setState({
+      favoriteSongs: await getFavoriteSongs(),
+      isLoading: false,
+    });
+
+    const { favoriteSongs } = this.state;
+    const { trackName } = this.props;
+
+    favoriteSongs.forEach((song) => {
+      if (trackName === song.trackName) {
+        this.setState({ isFav: true });
+      }
+    });
   }
 
   async addFavorite(song) {
@@ -21,7 +45,10 @@ export default class MusicCard extends Component {
   }
 
   render() {
-    const { isLoading, checked } = this.state;
+    const { isLoading,
+      checked,
+      isFav,
+    } = this.state;
 
     const {
       trackId,
@@ -44,7 +71,7 @@ export default class MusicCard extends Component {
             Favorita
             <input
               type="checkbox"
-              checked={ checked }
+              checked={ isFav ? true : checked }
               onChange={ (() => this.addFavorite(song)) }
               name="favoriteCheckbox"
               id="favorite"
@@ -57,6 +84,8 @@ export default class MusicCard extends Component {
 }
 
 MusicCard.propTypes = {
+  trackId: propTypes.string,
+  song: propTypes.string,
   previewUrl: propTypes.string,
   trackName: propTypes.string,
 }.isRequired;

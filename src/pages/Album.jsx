@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+// import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class Album extends Component {
@@ -18,25 +18,16 @@ export default class Album extends Component {
     };
 
     this.fetchData = this.fetchData.bind(this);
-    this.getSongs = this.getSongs.bind(this);
   }
 
   async componentDidMount() {
     this.fetchData();
-    this.getSongs();
-  }
-
-  async getSongs() {
-    this.setState({ isLoading: true });
-    await getFavoriteSongs();
-    console.log(await getFavoriteSongs());
-    this.setState({ isLoading: false });
+    // this.getSongs();
   }
 
   async fetchData() {
     const { match: { params: { id } } } = this.props;
     const songs = await getMusics(id);
-    console.log(songs);
     this.setState({
       albumSongs: songs,
       artistName: songs[0].artistName,
@@ -45,7 +36,12 @@ export default class Album extends Component {
   }
 
   render() {
-    const { albumSongs, artistName, collectionName, isLoading } = this.state;
+    const {
+      albumSongs,
+      artistName,
+      collectionName,
+      isLoading,
+    } = this.state;
 
     return (
       <>
