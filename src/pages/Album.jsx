@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
-// import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class Album extends Component {
@@ -22,7 +21,6 @@ export default class Album extends Component {
 
   async componentDidMount() {
     this.fetchData();
-    // this.getSongs();
   }
 
   async fetchData() {
@@ -32,6 +30,7 @@ export default class Album extends Component {
       albumSongs: songs,
       artistName: songs[0].artistName,
       collectionName: songs[0].collectionName,
+      artworkUrl100: songs[0].artworkUrl100,
     });
   }
 
@@ -41,26 +40,34 @@ export default class Album extends Component {
       artistName,
       collectionName,
       isLoading,
+      artworkUrl100,
     } = this.state;
 
     return (
       <>
         <Header />
         {isLoading ? <Loading /> : (
-          <>
-            <div data-testid="page-album">
-              <h3 data-testid="artist-name">{artistName}</h3>
-              <h4 data-testid="album-name">{collectionName}</h4>
+          <div className="main">
+            <section data-testid="page-album" className="albumHeader">
+              <img src={ artworkUrl100 } alt={ collectionName } />
+              <section className="albumInfo">
+                <h1 data-testid="album-name">{collectionName}</h1>
+                <span data-testid="artist-name">{artistName}</span>
+              </section>
+            </section>
+            <div className="songs">
+              {albumSongs.map((song) => (
+                song.trackName !== undefined && <MusicCard
+                  key={ song.previewUrl }
+                  trackId={ song.trackId }
+                  trackName={ song.trackName }
+                  artist={ song.artistName }
+                  previewUrl={ song.previewUrl }
+                  song={ song }
+                  thumb={ song.artworkUrl100 }
+                />))}
             </div>
-            {albumSongs.map((song) => (
-              song.trackName !== undefined && <MusicCard
-                key={ song.previewUrl }
-                trackId={ song.trackId }
-                trackName={ song.trackName }
-                previewUrl={ song.previewUrl }
-                song={ song }
-              />))}
-          </>)}
+          </div>)}
       </>
     );
   }

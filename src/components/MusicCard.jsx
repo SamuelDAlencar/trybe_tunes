@@ -53,15 +53,28 @@ export default class MusicCard extends Component {
     const {
       trackId,
       trackName,
+      artist,
       previewUrl,
       song,
+      thumb,
     } = this.props;
 
     return (
       isLoading ? <Loading /> : (
-        <>
-          <span>{trackName}</span>
-          <audio data-testid="audio-component" src={ previewUrl } controls>
+        <div className="musicCard">
+          <section className="songInfo">
+            <img src={ thumb } alt="" />
+            <div className="artist-track">
+              <h3>{trackName}</h3>
+              <span>{artist}</span>
+            </div>
+          </section>
+          <audio
+            className="audio"
+            data-testid="audio-component"
+            src={ previewUrl }
+            controls
+          >
             <track kind="captions" label={ trackName } />
             O seu navegador não suporta o elemento
             <code>audio</code>
@@ -78,7 +91,7 @@ export default class MusicCard extends Component {
               data-testid={ `checkbox-music-${trackId}` }
             />
           </label>
-        </>)
+        </div>)
     );
   }
 }

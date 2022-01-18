@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import Header from '../components/Header';
 
 export default class Login extends Component {
   render() {
@@ -10,26 +11,30 @@ export default class Login extends Component {
     } = this.props;
 
     return (
-      <div data-testid="page-login">
-        <label htmlFor="name">
-          Nome
-          <input
-            type="text"
-            data-testid="login-name-input"
-            id="name"
-            onChange={ inputHandler }
-            value={ input }
-          />
-        </label>
-        <button
-          type="submit"
-          data-testid="login-submit-button"
-          disabled={ isDisabled }
-          onClick={ createUser }
-        >
-          Entrar
-        </button>
-      </div>
+      <>
+        <Header />
+        <div data-testid="page-login" className="login">
+          <label htmlFor="name">
+            Nome:
+            {' '}
+            <input
+              type="text"
+              data-testid="login-name-input"
+              id="name"
+              onChange={ inputHandler }
+              value={ input }
+            />
+          </label>
+          <button
+            type="submit"
+            data-testid="login-submit-button"
+            disabled={ isDisabled }
+            onClick={ createUser }
+          >
+            Entrar
+          </button>
+        </div>
+      </>
     );
   }
 }

@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #141414;
+  color: #ffffff;
+  font-family: 'Gotham', sans-serif;
 }
 
 code {
@@ -12,8 +15,178 @@ code {
     monospace;
 }
 
+header {
+  background-color: #1DB954;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+header .nav {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+header .nav a {
+  text-decoration: none;
+  font-size: 30px;
+  color: #ffffff;
+  transition: 0.1s;
+}
+
+header .nav a:hover {
+  font-size: 33px;
+}
+
+header .profile {
+  width: 40%;
+} 
+
+header .profile b {
+  color: #ffffff;
+  transition: 0.1s;
+  text-decoration: none;
+}
+
+header .profile b:hover {
+  font-size: 17px;
+}
+
 .loading {
   align-items: center;
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 110px;
 }
+
+.main {
+  padding: 30px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
+}
+
+.login button, .searchPage button {
+  background-color: #1DB954;
+  font-size: 30px;
+  font-family: 'Gotham', sans-serif;
+  padding: 15px;
+  margin-left: 30px;
+  color: #ffffff;
+  border: 0px;
+  border-radius: 5px;
+  transition: 0.1s;
+}
+
+.login button:hover, .searchPage button:hover {
+  background-color: #116d31;
+  cursor: pointer;
+}
+
+.login button:disabled {
+  color:rgb(65, 65, 65);
+  background-color:#116d31;
+}
+
+.login label, .searchPage label {
+  font-size: 40px;
+  align-self: center;
+}
+
+.login input, .searchPage input {
+  font-size: 30px;
+}
+
+.searchPage{
+  padding: 15px;
+}
+
+.album {
+  margin: 15px 0px;
+}
+
+.album a {
+  background-color: #181818;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.album a:hover {
+  background-color: #292929;
+}
+
+.albumImg {
+
+}
+
+.albumHeader {
+  display: flex;
+}
+
+.albumInfo {
+  margin-left: 30px;
+}
+
+.songs {
+  margin: 15px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.resultText {
+  margin: 30px 0px;
+}
+
+.musicCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+  padding: 15px;
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+  border-radius: 5px;
+  transition: 0.3s;
+  background-color: #181818;
+}
+
+.songInfo {
+  display: flex;
+
+}
+
+.artist-track span {
+  color: rgb(150, 150, 150);
+}
+
+.songInfo img {
+  margin-right: 15px;
+}
+
+.audio {
+  width: 400px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #c2c2c2;
+  width: 400px;
+}
+

@@ -66,45 +66,56 @@ export default class Search extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-search">
+        <div data-testid="page-search" className="searchPage">
           {isLoading ? <Loading />
             : (
               <>
-                <label htmlFor="search-artist">
-                  Artist
-                  <input
-                    data-testid="search-artist-input"
-                    id="search-artist"
-                    onChange={ this.handleChange }
-                    value={ input }
-                  />
-                </label>
-                <button
-                  data-testid="search-artist-button"
-                  disabled={ isDisabled }
-                  type="button"
-                  onClick={ this.searchArtist }
-                >
-                  Pesquisar
-                </button>
-                {error404 && <p>Nenhum álbum foi encontrado</p>}
+                <section className="searchSec">
+                  <label htmlFor="search-artist">
+                    Artist:
+                    {' '}
+                    <input
+                      data-testid="search-artist-input"
+                      id="search-artist"
+                      onChange={ this.handleChange }
+                      value={ input }
+                    />
+                  </label>
+                  <button
+                    data-testid="search-artist-button"
+                    disabled={ isDisabled }
+                    type="button"
+                    onClick={ this.searchArtist }
+                  >
+                    Pesquisar
+                  </button>
+                </section>
+                {error404
+                && (
+                  <h2>
+                    Nenhum álbum foi encontrado
+                    {' '}
+                    <span>:(</span>
+                  </h2>)}
                 {(isReady === true && error404 === false) && (
-                  <span>
+                  <h2 className="resultText">
                     Resultado de álbuns de:
                     {' '}
                     {artistName}
-                  </span>)}
+                  </h2>)}
                 {searchResults.map((result) => (
-                  <Link
-                    data-testid={ `link-to-album-${result.collectionId}` }
-                    key={ result.collectionId }
-                    to={ `/album/${result.collectionId}` }
-                  >
-                    <h2>{result.collectionName}</h2>
-                    <h4>{result.artistName}</h4>
-                    <p>{result.releaseDate}</p>
-                    <h3>{result.collectionPrice}</h3>
-                  </Link>
+                  <div key={ result.collectionId } className="album">
+                    <Link
+                      data-testid={ `link-to-album-${result.collectionId}` }
+                      to={ `/album/${result.collectionId}` }
+                    >
+                      <img src={ result.artworkUrl100 } alt={ result.artistName } />
+                      <section className="albumInfo">
+                        <h2>{result.collectionName}</h2>
+                        <span>{result.artistName}</span>
+                      </section>
+                    </Link>
+                  </div>
                 ))}
               </>)}
         </div>

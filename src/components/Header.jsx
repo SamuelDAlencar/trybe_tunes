@@ -36,10 +36,23 @@ export default class Header extends Component {
         {isLoading ? <Loading />
           : (
             <>
-              <span data-testid="header-user-name">{user}</span>
-              <Link data-testid="link-to-search" to="/search">Search</Link>
-              <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-              <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+              <section className="profile">
+                {localStorage.getItem('user')
+                  ? (
+                    <section to="/">
+                      Perfil:
+                      {' '}
+                      <b data-testid="header-user-name">
+                        {user}
+                      </b>
+                    </section>)
+                  : <Link to="/"><b>Fazer Login</b></Link>}
+              </section>
+              <section className="nav">
+                <Link data-testid="link-to-search" to="/search">Search</Link>
+                <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+                <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+              </section>
             </>)}
       </header>
     );
