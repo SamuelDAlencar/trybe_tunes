@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import propTypes from 'prop-types';
 import Loading from '../pages/Loading';
-import * as userAPI from '../services/userAPI';
+import * as userAPI from '../services/userAPI'; import image from '../images/image.png';
 
 export default class Header extends Component {
   constructor() {
@@ -36,22 +36,22 @@ export default class Header extends Component {
         {isLoading ? <Loading />
           : (
             <>
+              <img src={ image } alt="" />
+              <section className="nav">
+                <Link data-testid="link-to-search" to="/search">Search</Link>
+                <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+                <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+              </section>
               <section className="profile">
                 {localStorage.getItem('user')
                   ? (
                     <section to="/">
-                      Perfil:
-                      {' '}
+                      <i className="far fa-user-circle fa-2x" />
                       <b data-testid="header-user-name">
                         {user}
                       </b>
                     </section>)
                   : <Link to="/"><b>Fazer Login</b></Link>}
-              </section>
-              <section className="nav">
-                <Link data-testid="link-to-search" to="/search">Search</Link>
-                <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-                <Link data-testid="link-to-profile" to="/profile">Profile</Link>
               </section>
             </>)}
       </header>

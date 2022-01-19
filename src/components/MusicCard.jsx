@@ -61,9 +61,9 @@ export default class MusicCard extends Component {
 
     return (
       isLoading ? <Loading /> : (
-        <div className="musicCard">
+        <li className="musicCard">
           <section className="songInfo">
-            <img src={ thumb } alt="" />
+            <img src={ thumb } alt={ trackName } />
             <div className="artist-track">
               <h3>{trackName}</h3>
               <span>{artist}</span>
@@ -91,7 +91,7 @@ export default class MusicCard extends Component {
               data-testid={ `checkbox-music-${trackId}` }
             />
           </label>
-        </div>)
+        </li>)
     );
   }
 }

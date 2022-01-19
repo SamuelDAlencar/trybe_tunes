@@ -51,11 +51,12 @@ export default class Album extends Component {
             <section data-testid="page-album" className="albumHeader">
               <img src={ artworkUrl100 } alt={ collectionName } />
               <section className="albumInfo">
+                <b><span>Album</span></b>
                 <h1 data-testid="album-name">{collectionName}</h1>
-                <span data-testid="artist-name">{artistName}</span>
+                <b><span data-testid="artist-name">{artistName}</span></b>
               </section>
             </section>
-            <div className="songs">
+            <ol className="musics">
               {albumSongs.map((song) => (
                 song.trackName !== undefined && <MusicCard
                   key={ song.previewUrl }
@@ -66,7 +67,7 @@ export default class Album extends Component {
                   song={ song }
                   thumb={ song.artworkUrl100 }
                 />))}
-            </div>
+            </ol>
           </div>)}
       </>
     );
