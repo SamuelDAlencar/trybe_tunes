@@ -5,10 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #141414;
+  background-image: linear-gradient(to bottom,#242424,#070707);
+  background-repeat: no-repeat;
+  background-color: #070707;
+  background-size: cover;
   color: #ffffff;
   font-family: 'Gotham', sans-serif;
   box-sizing: border-box;
+  /* width: 100vw; */
+  height: 100vh;
 }
 
 code {
@@ -40,22 +45,23 @@ header .nav {
 header .nav a {
   text-decoration: none;
   font-size: 30px;
-  color: #ffffff;
+  color: #b1b1b1;
   transition: 0.1s;
 }
 
 header .nav a:hover {
+  color: #ffffff;
   font-size: 33px;
 }
 
-header .profile {
+header .profile, .loginLink {
   width: 50%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 } 
 
-header .profile section {
+header .profile a {
   margin-right: 15px;
   padding: 10px;
   border-radius: 50px;
@@ -66,20 +72,34 @@ header .profile section {
   align-items: center;
 }
 
-header .profile section i {
+header .profile a i {
   margin-right: 10px;
 }
 
-header .profile b {
-  color: #ffffff;
+header .profile a {
+  color: #b1b1b1;
   transition: 0.1s;
   text-decoration: none;
   text-align: center;
   align-self: center;
 }
 
-header .profile b:hover {
+header .profile a:hover {
+  color: #ffffff;
   font-size: 17px;
+}
+
+.loginLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
+  color: white;
+  text-decoration: none;
+}
+
+.loginLink i {
+  margin-right: 10px;
 }
 
 .loading {
@@ -88,6 +108,7 @@ header .profile b:hover {
   justify-content: center;
   width: 100%;
   height: 110px;
+  font-size: 30px;
 }
 
 .login {
@@ -224,3 +245,19 @@ audio::-webkit-media-controls-panel {
   width: 400px;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(70, 70, 70);
+  transition: 5s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(133, 133, 133);
+}

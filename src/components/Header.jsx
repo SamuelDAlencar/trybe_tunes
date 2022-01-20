@@ -33,27 +33,35 @@ export default class Header extends Component {
 
     return (
       <header data-testid="header-component">
-        {isLoading ? <Loading />
-          : (
-            <>
-              <img src={ image } alt="" />
-              <section className="nav">
-                <Link data-testid="link-to-search" to="/search">Search</Link>
-                <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
-                <Link data-testid="link-to-profile" to="/profile">Profile</Link>
-              </section>
+        <img src={ image } alt="" />
+        <section className="nav">
+          <Link data-testid="link-to-search" to="/search">Search</Link>
+          <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>
+          <Link data-testid="link-to-profile" to="/profile">Profile</Link>
+        </section>
+        {
+          isLoading ? <Loading />
+            : (
               <section className="profile">
                 {localStorage.getItem('user')
                   ? (
-                    <section to="/">
+                    <Link to="/">
                       <i className="far fa-user-circle fa-2x" />
                       <b data-testid="header-user-name">
                         {user}
                       </b>
-                    </section>)
-                  : <Link to="/"><b>Fazer Login</b></Link>}
+                    </Link>)
+                  : (
+                    <Link to="/" className="loginLink">
+                      <i className="far fa-user-circle fa-2x" />
+                      <b>
+                        Fazer Login
+                      </b>
+                    </Link>
+                  )}
               </section>
-            </>)}
+            )
+        }
       </header>
     );
   }

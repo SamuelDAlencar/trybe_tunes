@@ -62,13 +62,20 @@ class App extends Component {
             path="/"
             render={ () => (
               <>
-                <Login
-                  inputHandler={ this.handleChange }
-                  input={ input }
-                  isDisabled={ isDisabled }
-                  createUser={ this.handleClick }
-                />
-                {isLoading && <Loading /> }
+                {
+                  isLoading
+                    ? (
+                      <Loading />
+                    )
+                    : (
+                      <Login
+                        inputHandler={ this.handleChange }
+                        input={ input }
+                        isDisabled={ isDisabled }
+                        createUser={ this.handleClick }
+                      />
+                    )
+                }
                 {isLogged && <Redirect to="/search" /> }
               </>
             ) }
