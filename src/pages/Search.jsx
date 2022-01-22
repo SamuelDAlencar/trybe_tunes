@@ -35,7 +35,6 @@ export default class Search extends Component {
     this.setState({ isLoading: true });
     const { input } = this.state;
     const results = await searchAlbumsAPIs(input);
-    console.log(results);
 
     if (results.length === 0) {
       this.setState({ error404: true });
