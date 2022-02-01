@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import propTypes from 'prop-types';
 import Loading from '../pages/Loading';
-import * as userAPI from '../services/userAPI'; import image from '../images/image.png';
+import * as userAPI from '../services/userAPI';
+import image2 from '../images/image2.png';
 
 export default class Header extends Component {
   constructor() {
@@ -33,7 +34,7 @@ export default class Header extends Component {
 
     return (
       <header data-testid="header-component">
-        <img src={ image } alt="" />
+        <img src={ image2 } alt="" />
         <section className="nav">
           <Link data-testid="link-to-search" to="/search">Search</Link>
           <Link data-testid="link-to-favorites" to="/favorites">Favorites</Link>

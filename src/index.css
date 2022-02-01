@@ -65,7 +65,6 @@ header .profile a {
   margin-right: 15px;
   padding: 10px;
   border-radius: 50px;
-  background-color: #000000;
   width: fit-content;
   display: flex;
   justify-content: center;
@@ -105,14 +104,22 @@ header .profile a:hover {
 .loginLink i {
   margin-right: 10px;
 }
-
-.loading {
+.loading-div {
   align-items: center;
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: flex-end;
+  width: 50%;
   height: 110px;
-  font-size: 30px;
+}
+
+.loading-message {
+  font-size: 100%;
+  margin-right: 10%;
+}
+
+.loading-gif {
+  width: 10%;
+  margin: 30% 5%;
 }
 
 .login {
