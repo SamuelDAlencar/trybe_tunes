@@ -86,7 +86,17 @@ class App extends Component {
             path="/album/:id"
             render={ (propRoute) => <Album { ...propRoute } /> }
           />
-          <Route exact path="/favorites" component={ Favorites } />
+          <Route
+            exact
+            path="/favorites"
+            render={ () => (
+              isLoading
+                ? (
+                  <Loading />
+                )
+                : (
+                  <Favorites />)) }
+          />
           <Route exact path="/profile" component={ Profile } />
           <Route exact path="/profile/edit" component={ ProfileEdit } />
           <Route exact path="*" component={ NotFound } />
