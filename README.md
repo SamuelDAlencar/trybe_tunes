@@ -1,20 +1,20 @@
 # TrybeTunes
-Projeto feito durante o módulo de front-end na Trybe 💚
+Music streaming site project made during the front-end module at Trybe 💚
 
-# Habilidades
+# Skills put into practice 👨‍💻
 
-  * Fazer requisições e consumir dados vindos de uma `API`;
+  * Make requests and consume data coming from an API
 
-  * Utilizar os ciclos de vida de um componente React;
+  * Make use of life cycles in a React component
 
-  * Utilizar a função `setState` de forma a garantir que um determinado código só é executado após o estado ser atualizado
+  * Use the `setState` function in a way that guarantees that a particular code is executed only after it's state is updated
   
-  * Utilizar o componente `BrowserRouter` corretamente;
+  * Make correct use of the `BrowserRouter` component
 
-  * Criar rotas, mapeando o caminho da URL com o componente correspondente, via `Route`;
+  * Create routes, mapping out the component's URL path via `Route` 
 
-  * Utilizar o `Switch` do `React Router`
+  * Use React Router's `Switch`
 
-  * Usar o componente `Redirect` pra redirecionar para uma rota específica;
+  * Use the `Redirect` component to redirect to a specific Route
 
-  * Criar links de navegação na aplicação com o componente `Link`;
+  * Create navigation links in the aplication with the `Link` component
