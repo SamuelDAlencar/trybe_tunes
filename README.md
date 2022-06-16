@@ -1,5 +1,8 @@
 # TrybeTunes
-Music streaming site project made during the front-end module at Trybe 💚
+
+Music streaming site that allows the user to listen to song previews and save it's favorites.
+
+Project made during the front end module at Trybe.
 
 # Skills put into practice 👨‍💻
 
