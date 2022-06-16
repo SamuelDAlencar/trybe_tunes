@@ -22,7 +22,7 @@ Project made during the front end module at Trybe.
 
   * Create navigation links in the aplication with the `Link` component
 
-# How to run and test the application 👨‍💻:
+# How to run and test the application 👨‍💻
 
  * Clone this rep: (SSH) `git clone git@github.com:SamuelDAlencar/trybe_tunes.git` in the terminal
  * Install the dependencies with `npm i`
