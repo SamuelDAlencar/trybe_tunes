@@ -21,3 +21,10 @@ Project made during the front end module at Trybe.
   * Use the `Redirect` component to redirect to a specific Route
 
   * Create navigation links in the aplication with the `Link` component
+
+# How to run and test the application 👨‍💻:
+
+ * Clone this rep: (SSH) `git clone git@github.com:SamuelDAlencar/trybe_tunes.git` in the terminal
+ * Install the dependencies with `npm i`
+ * Start the application with `npm start`
+
